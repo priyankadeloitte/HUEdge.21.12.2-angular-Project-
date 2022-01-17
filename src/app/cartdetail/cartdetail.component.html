@@ -1,0 +1,131 @@
+
+<div class="container">
+  <div class="navbar shadow-sm" style="background-color: black;">
+    <div class="navbar-brand align-item-center d-flex" style="color: white;margin-left: 15px;font-size: inherit;">
+    Discover Latest Courses on <br> React
+    </div>
+    <div  style="background-color:f6f6f6 !important;margin-right: 20px;">
+      </div>
+  </div>
+  <div   >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/dashboard" routerLinkActive="active">{{courseCount}} Courses in Cart</a>
+            </li>
+
+            <li class="nav-item dropdown">
+
+              <!--<select class="form-select" aria-label="Default select example" id="sort-by" (change)="sort($event)">
+                <option value="" selected disabled hidden>Course Price</option>
+                <option value="Course Price">Course Price</option>
+                <option value="Low">Show Low to High Price</option>
+                <option value="High">Show High to Low Price</option>
+            </select>-->
+
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="column" style="width: 75%;">
+
+        <div class="row">
+
+          <ng-container *ngFor="let items of item  ">
+              <div class="card "  style="margin-top: 12px;margin-right: 12px;">
+                <div class="row"  style="margin-top: 19px;">
+                  <div class="column" style="width: 10%;"><img src="../../assets/images/angularpic.png"
+                   style="width: 91%;" alt="angular"></div>
+                  <div class="column"  style="width: 30%;">
+                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{items.title}}</h5>
+                    <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+
+                      {{items.description}}
+
+                    </p>
+                   <div class="row" style="margin-bottom: 10px;"> <div class="column " style="width: auto; border: white ;" *ngFor="let tag of items.tags">{{tag}}</div></div>
+                  </div>
+                  <div class="column" style="width: 10%;">{{items.author}}</div>
+                  <div class="column" style="width: 10%;">{{items.actual_price}}/-</div>
+                  <div class="column" style="width: 10%;" ><s *ngIf="items.discounted_price">{{items.discounted_price}}/-</s>-</div>
+                  <div class="column" style="width: 19%;" (click)="addToWhishList(items)"><p> Move to Whishlist</p></div>
+                  <div class="column" style="width: 5%;"><span class="fa fa-trash " (click)="deleteCart(items)"></span></div>
+                <div class="column" style="width: 5%;"><span class="fa fa-angle-right" (click)="showCourseDetail(items)"></span></div>
+
+                </div>
+
+
+              </div>
+          </ng-container>
+
+      </div>
+      <div class="container "  *ngIf="itemWishList.length>0" style="margin-top: 12px;margin-right: 12px; border: 1px solid rgba(0,0,0,.125);padding-bottom: 24px;">
+  <h6>Recommended Courses</h6>
+        <div class="row">
+
+          <ng-container *ngFor="let item of itemWishList  ">
+              <div class="card "  style="margin-top: 12px;margin-right: 12px;">
+                <div class="row"  style="margin-top: 19px;">
+                  <div class="column" style="width: 10%;"><img src="../../assets/images/angularpic.png"
+                   style="width: 91%;" alt="angular"></div>
+                  <div class="column"  style="width: 30%;">
+                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
+                    <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+
+                      {{item.description}}
+
+                    </p>
+                   <div class="row" style="margin-bottom: 10px;"> <div class="column " style="width: auto; border: white ;" *ngFor="let tag of item.tags">{{tag}}</div></div>
+                  </div>
+                  <div class="column" style="width: 10%;">{{item.author}}</div>
+                  <div class="column" style="width: 10%;">{{item.actual_price}}/-</div>
+                  <div class="column" style="width: 13%;" ><s *ngIf="item.discounted_price">{{item.discounted_price}}/-</s>-</div>
+                  <div class="column" style="width: 19%;"><button class="btn btn-primary" (click)="addToCart(item)" style="background-color: #ff6a00 ;">ADD TO CARD</button></div>
+                  <div class="column" style="width: 2%;"></div>
+                <div class="column" style="width: 5%;"><span class="fa fa-angle-right" (click)="showCourseDetail(item)"></span></div>
+
+                </div>
+
+
+              </div>
+          </ng-container>
+
+      </div>
+    </div>
+      </div>
+      <div class="column" style="width: 25%;">
+        <div class="container " style="height: auto;margin:12px;border: 1px solid rgba(0,0,0,.125);padding: 20px;">
+
+
+
+      <div>Total Amount</div>
+      <div><h3>Rs {{ getTotal() }}/-</h3></div>
+
+      <p style="font-size: 12px;
+      color: green;">You have saved Rs {{getDiscountTotal()}}/-</p>
+      <button class="btn btn-primary" style="    width: 100%;
+      background-color: #ff6a00;
+      border: white;" (click)="checkoutCart()">CHECKOUT</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--<ul>
+    <li *ngFor="let product of products">
+
+    </li>
+  </ul>-->
+  </div>
