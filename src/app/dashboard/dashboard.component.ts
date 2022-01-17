@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
 
   item = this.coursedetail.getItems();
 
-
+//ADD TO CARD IN CART COMPONENT
   addToCart(product:Courses){
     this.coursedetail.addToCart(product);
 
