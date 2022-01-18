@@ -48,6 +48,7 @@ export class DashboardComponent implements OnInit {
   products: any = [];
   singleProduct: any = [];
   public searchInput:any=[];
+  public SortbyParam:any=[];
   constructor(private coursedetail: CoursesdetailService,private httpClient: HttpClient,private router: Router ){}
   ngOnInit(): void {
     this.httpClient.get("../assets/coursesdetail.json").subscribe(data =>{

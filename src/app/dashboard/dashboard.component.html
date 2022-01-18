@@ -23,11 +23,11 @@ background: #ff6a00 !important;
 
           <li class="nav-item dropdown">
 
-            <select class="form-select" aria-label="Default select example" id="sort-by" (change)="sort($event)">
+            <select class="form-select" aria-label="Default select example" [(ngModel)] = 'SortbyParam' id="sort-by" >
               <option value="" selected disabled hidden>Course Price</option>
-              <option value="Course Price">Course Price</option>
-              <option value="Low">Show Low to High Price</option>
-              <option value="High">Show High to Low Price</option>
+              
+              <option value="asc">Show Low to High Price</option>
+              <option value="desc">Show High to Low Price</option>
           </select>
 
           </li>
@@ -47,7 +47,7 @@ background: #ff6a00 !important;
   <div class="row">
     <div class="column" style="width: 75%;">
       <div class="row">
-        <ng-container *ngFor="let item of products | filterPipe:searchInput | paginate: {
+        <ng-container *ngFor="let item of products | filterPipe:searchInput |sort:['actual_price',SortbyParam] | paginate: {
           itemsPerPage: pageSize,
           currentPage: page,
           totalItems: count

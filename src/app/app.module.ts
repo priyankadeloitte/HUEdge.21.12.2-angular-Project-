@@ -8,11 +8,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FilterPipePipe } from './filter-pipe.pipe';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoursedetailComponent } from './coursedetail/coursedetail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CartdetailComponent } from './cartdetail/cartdetail.component';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CartdetailComponent } from './cartdetail/cartdetail.component';
     UserdetailComponent,
     FilterPipePipe,
     CoursedetailComponent,
-    CartdetailComponent
+    CartdetailComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
